@@ -16,6 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 
 # Quick-start development settings - unsuitable for production
@@ -72,6 +73,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chatApp.wsgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        # This example app uses the Redis channel layer implementation asgi_redis
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(redis_host, 6379)],
+        },
+       "ROUTING": "chatapp.routing.channel_routing", # We will create it in a moment
+    },
+}
 
 
 # Database
