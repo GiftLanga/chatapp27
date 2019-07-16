@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static  "js/modal.js" %}" > </script>
+{% if messages %}
+<div class="modal">
+  <div class="overlay"></div>
+  <div class="modal_content">
+    <!-- Dynamic Section -->
+    <h3 style="text-align: center;">Error</h3>
+    <p style="text-align: center; padding: 5px 5px;">
+      {%for message in messages%}
+        <div style="color: red; text-align: center;">{{message}}</div>
+      {% endfor %}
+    </p>
+    <!-- End of Dynamic Section -->
+    <button title="Close" class="close_modal" onclick="toggleModal()"> X
+    </button>
+  </div>
+</div>
+{% endif %}

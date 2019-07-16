@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/auth.css" %}">
+<div class="registerForm">
+  <form action="{% url 'register' %}" method="POST" enctype="application/json">
+    {% csrf_token %}
+    {{ userDetailsForm.first_name }}
+    {% for error in userDetailsForm.first_name.errors %}
+      <div class="form-error">{{error}}</div>
+    {% endfor %}
+    {{ userDetailsForm.last_name }}
+    {% for error in userDetailsForm.last_name.errors %}
+      <div class="form-error">{{error}}</div>
+    {% endfor %}
+    {{ registrationForm.gender }}
+    {{ userDetailsForm.username }}
+    {% for error in userDetailsForm.username.errors %}
+      <div class="form-error">{{error}}</div>
+    {% endfor %}
+    {{ userDetailsForm.email }}
+    {% for error in userDetailsForm.email.errors %}
+      <div class="form-error">{{error}}</div>
+    {% endfor %}
+    {{ userDetailsForm.password }}    
+    {% for error in userDetailsForm.password.errors %}
+      <div class="form-error">{{error}}</div>
+    {% endfor %}
+    {{ userDetailsForm.confirm_password }}    
+    {% for error in userDetailsForm.confirm_password.errors %}
+      <div class="form-error">{{error}}</div>
+    {% endfor %}
+    <input type="submit" value="Register" id="analytics"/>
+  </form>
+</div>

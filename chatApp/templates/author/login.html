@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<script type="text/javascript" src="{% static  "js/login.js" %}" > </script>
+<div>
+  <form name="loginForm" action="{% url 'login' %}" 
+    method="POST" enctype="application/json"
+    onsubmit="return validateLogin(event)">
+    {% csrf_token %}
+    {{ loginForm.username }}
+    {{ loginForm.password }}
+    <input type="submit" value="Login" id="analytics"/>
+  </form>
+
+  {% block modal %}
+    {% include 'modal.html'%}
+  {% endblock %}
+</div>

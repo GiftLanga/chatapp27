@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  chatapp:
+    build: .
+    volumes:
+      - .:/opt/services/chatapp/src
+      - static_volume:/opt/services/chatApp/chatApp/static  # <-- bind the static volume
+      - media_volume:/opt/services/chatApp/chatApp/media
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/opt/services/chatApp/chatApp/static  # <-- bind the static volume
+      - media_volume:/opt/services/chatApp/chatApp/media 
+    depends_on:  # <-- wait for djangoapp to be "ready" before starting this service
+      - chatapp
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+
+volumes:
+  static_volume:  # <-- declare the static volume
+  media_volume:

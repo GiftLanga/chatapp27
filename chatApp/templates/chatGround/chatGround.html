@@ -1,0 +1,49 @@
+{% extends 'index.html'%}
+{% load staticfiles %}
+{% block loginForm%}
+  <div>
+    <form name="loginForm" action="{% url 'logout' %}" 
+      method="POST" enctype="application/json">
+      {% csrf_token %}
+      <label>{{username}}</label>
+      <input type="submit" value="Logout" id="analytics"/>
+    </form>
+  </div>
+{% endblock %}
+
+{%block content%}
+<link rel="stylesheet" type="text/css" href="{% static "css/chatGround.css" %}">
+<div class="chatground-container">
+  <h2>ChatGround</h2>
+  <div class="chatground-body">
+    <div class="chatground-rooms">
+      <!--{% block availableUsers%}
+      {% endblock %}-->
+      <div class="chatground-rooms-title">The Rooms </div>
+      <div class="chatground-room-list"> 
+        {% for room in rooms %}
+            <div> {{room.name}} </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="chatground-space">
+      <div class="chatground-rooms-title">The Space </div>
+      <div class="chatground-space-sections"> 
+        <div class="chatground-space-chat-section">
+            <div class="chatground-space-messages"> 
+            
+            </div>
+            <div class="chatground-space-form">
+              <form> 
+                <textarea placeholder="type your message"></textarea>
+                <input type="submit" />
+              </form>
+            </div>
+        </div>
+        <div class="chatground-space-room-users-section"> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}

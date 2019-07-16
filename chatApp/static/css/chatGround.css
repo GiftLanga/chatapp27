@@ -1,0 +1,86 @@
+.chatground-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chatground-container > h2 {
+  text-align: center;
+  width: 100%;
+}
+
+.chatground-body {
+  display: flex;    
+  border: 1px solid orange;
+  width: 100%;
+  min-height: 400px;
+}
+
+.chatground-rooms {
+  width: 30%;
+  border: 1px solid orange;
+}
+
+.chatground-room-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.chatground-room-list > div {
+  font-size: 20px;
+  border-radius: 50px;
+  box-shadow: burlywood 0 0 10px 1px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;    
+  margin: 7px 0;
+  cursor: pointer;
+}
+
+.chatground-rooms-title {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 2px solid burlywood;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.chatground-space {
+  width: 70%;
+  border: 1px solid orange;
+}
+
+.chatground-space-sections {
+  width: 100%;
+  height: calc(100% - 80px);
+  display: flex;
+}
+
+.chatground-space-chat-section {
+  width: 50%;
+  border-right: 1px solid;
+}
+
+.chatground-space-room-users-section {
+  width: 45%;
+  border-left: 1px solid;
+}
+
+.chatground-space-messages {
+  height: 85%;
+}
+
+.chatground-space-form > form {
+  height: 15%;
+  display: flex;
+  padding: 0 5px;
+  justify-content: center;
+}
+
+.chatground-space-form > form > textarea {
+  width: 100%;
+}

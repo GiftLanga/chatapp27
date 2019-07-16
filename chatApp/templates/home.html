@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{%block loginForm%}
+  {% include "author/login.html" %}
+{% endblock %}
+
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
+<div class="homepage-container">
+  <div>
+    <h1>&#x2665; Welcome &#x2665;</h1>
+    <p>This is a chat service developed with django</p>
+    <p>&#x1F63A;</p>
+  </div>
+  {% include "author/register.html" %}
+</div>
+{% endblock %}
