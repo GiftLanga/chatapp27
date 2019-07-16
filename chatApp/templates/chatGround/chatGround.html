@@ -22,7 +22,7 @@
       <div class="chatground-rooms-title">The Rooms </div>
       <div class="chatground-room-list"> 
         {% for room in rooms %}
-            <div> {{room.name}} </div>
+            <div onclick="window.location='/chatGround/roomLabel={{room.label}}';"> {{room.name}} </div>
         {% endfor %}
       </div>
     </div>
@@ -31,7 +31,7 @@
       <div class="chatground-space-sections"> 
         <div class="chatground-space-chat-section">
             <div class="chatground-space-messages"> 
-            
+                  <div> {{messages.message}} </div>
             </div>
             <div class="chatground-space-form">
               <form> 
