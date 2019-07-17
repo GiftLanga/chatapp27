@@ -19,6 +19,23 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 
+#channel layers
+
+CHANNEL_LAYERS = {
+    "default": {
+        # This example app uses the Redis channel layer implementation asgi_redis
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(redis_host, 6379)],
+        },
+       "ROUTING": "chatApp.routing.channel_routing", # We will create it in a moment
+    },
+}
+
+ASGI_APPLICATION = 'chatApp.asgi.application'
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -42,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'author',
     'chatGroundApp',
+    'channels',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -72,18 +90,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'chatApp.wsgi.application'
-
-CHANNEL_LAYERS = {
-    "default": {
-        # This example app uses the Redis channel layer implementation asgi_redis
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(redis_host, 6379)],
-        },
-       "ROUTING": "chatapp.routing.channel_routing", # We will create it in a moment
-    },
-}
+WSGI_APPLICATION = 'chatApp.wsgi.application'# ASGI_APPLICATION should be set to your outermost router
 
 
 # Database

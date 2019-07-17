@@ -11,7 +11,12 @@
   </div>
 {% endblock %}
 
-{%block content%}
+{% block scripts %}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+{% endblock %}
+
+{% block content %}
 <link rel="stylesheet" type="text/css" href="{% static "css/chatGround.css" %}">
 <div class="chatground-container">
   <h2>ChatGround</h2>
@@ -48,4 +53,6 @@
     </div>
   </div>
 </div>
-{% endblock%}
+
+<script type="text/javascript" src="{% static  "js/chatGround.js" %}" > </script>
+{% endblock %}
