@@ -31,7 +31,9 @@
       <div class="chatground-space-sections"> 
         <div class="chatground-space-chat-section">
             <div class="chatground-space-messages"> 
-                  <div> {{messages.message}} </div>
+              {% for m in messages %}
+                <div> {{m.message}}  {{m.user.username}}</div>
+              {% endfor %}
             </div>
             <div class="chatground-space-form">
               <form> 

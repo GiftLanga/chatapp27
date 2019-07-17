@@ -9,9 +9,9 @@ def chatGroundHome(request, roomLabel=None):
     rooms = Room.objects.all()
     messages = []
     if roomLabel:
-      r = Room.objects.all().filter(label=roomLabel)
+      r = Room.objects.get(label=roomLabel)
       try:
-        messages = Message.objects.get(room=r)
+        messages = Message.objects.all().filter(room=r)
       except:
         messages = []
     my_dict = {
